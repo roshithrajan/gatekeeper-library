@@ -1,0 +1,15 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPReadOnlyRootFilesystem
+metadata:
+  name: psp-readonlyrootfilesystem
+spec:
+  enforcementAction: dryrun
+  match:
+    excludedNamespaces:
+    - kube-system
+    - gatekeeper-system
+    - azure-arc
+    - velero
+    - dynatrace
+    kinds:
+    - apiGroups: [""]
